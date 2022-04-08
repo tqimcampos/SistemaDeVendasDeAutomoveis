@@ -1,0 +1,37 @@
+version: '3.3'
+volumes:
+  data:
+services:
+
+  # MYSQL
+  SistemaDeVendasDeAutomoveis-mysql57:
+    image: mysql:8.0.19
+    command: --lower_case_table_names=1
+    container_name: mysql_SistemaDeVendasDeAutomoveis
+    ports:
+      - "3346:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=relampago
+      - MYSQL_DATABASE=SistemaDeVendasDeAutomoveis
+      - MYSQL_USER=tqi_mcampos
+      - MYSQL_PASSWORD=SistemaDeVendasDeAutomoveis
+      - TZ=America/Sao_Paulo
+
+#  rabbitmq-padrao:
+#    image: rabbitmq:3-management
+#    command: rabbitmq-server
+#    ports:
+#      - "15670:15672"
+#      - "5674:5672"
+#      - "5673:5671"
+#    environment:
+#      - RABBITMQ_DEFAULT_VHOST=tqipadrao-dev
+#      - RABBITMQ_DEFAULT_USER=guest
+#      - RABBITMQ_DEFAULT_PASS=guest
+#    healthcheck:
+#      test: [ "CMD", "nc", "-z", "localhost", "5672" ]
+#      interval: 10s
+#      timeout: 10s
+#      retries: 5
