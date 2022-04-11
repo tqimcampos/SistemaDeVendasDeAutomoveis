@@ -1,14 +1,20 @@
 package com.example.SistemaDeVendasDeAutomoveis.Domain
 
 import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.Id
 
+@Entity
 data class ClienteDomain(
 
-    @Column(name = "id_cliente")
+    @Id
+    @GeneratedValue
+    @Column(name = "idCliente")
     val idCliente: Long,
 
     @Column(name = "nome")
-    val nome:  String,
+    val nome: String,
 
     @Column(name = "cpf")
     val cpf: String,
@@ -17,4 +23,6 @@ data class ClienteDomain(
     val telefone: String,
 
     @Column(name = "email")
-    val email: String)
+    val email: String
+
+)
