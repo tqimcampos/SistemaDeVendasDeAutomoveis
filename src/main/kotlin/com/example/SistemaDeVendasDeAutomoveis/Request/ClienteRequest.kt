@@ -2,7 +2,7 @@ package com.example.SistemaDeVendasDeAutomoveis.Request
 
 data class ClienteRequest(
 
-   val idCliente: Long,
+   val idCliente: Int,
    val nome: String,
    val cpf: String,
    val email: String,
