@@ -19,14 +19,14 @@ class ClienteController(val repository: ClienteRepository) {
     @GetMapping
     fun search() : List<ClienteDomain> = repository.findAll()
 
-    @GetMapping("/{id}")
-    fun searchById(@PathVariable idCliente: Int) : ResponseEntity<ClienteDomain> =
+    @GetMapping("/{idCliente}")
+    fun searchById(@PathVariable idCliente: Long) : ResponseEntity<ClienteDomain> =
         repository.findByidCliente(idCliente).map {
             ResponseEntity.ok(it)
         }.orElse(ResponseEntity.notFound().build())
 
-    @PutMapping("/{id}")
-    fun upadate(@PathVariable idCliente: Int, @RequestBody clienteDomain: ClienteDomain) : ResponseEntity<ClienteDomain> =
+    @PutMapping("/{idCliente}")
+    fun upadate(@PathVariable idCliente: Long, @RequestBody clienteDomain: ClienteDomain) : ResponseEntity<ClienteDomain> =
         repository.findByidCliente(idCliente).map {
             val clienteUpdate = it.copy(
                 nome = clienteDomain.nome,
@@ -37,8 +37,8 @@ class ClienteController(val repository: ClienteRepository) {
             ResponseEntity.ok(repository.save(clienteUpdate))
         }.orElse(ResponseEntity.notFound().build())
 
-    @DeleteMapping("/{id}")
-    fun delete(@PathVariable idCliente: Int) : ResponseEntity<Void> =
+    @DeleteMapping("/{idCliente}")
+    fun delete(@PathVariable idCliente: Long) : ResponseEntity<Void> =
         repository.findByidCliente(idCliente).map {
             repository.delete(it)
             ResponseEntity<Void>(HttpStatus.OK)

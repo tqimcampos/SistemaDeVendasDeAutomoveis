@@ -4,7 +4,7 @@ import com.example.SistemaDeVendasDeAutomoveis.Domain.ClienteDomain
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 
-interface ClienteRepository : JpaRepository<ClienteDomain, Int>{
+interface ClienteRepository : JpaRepository<ClienteDomain, Long>{
 
-    fun findByidCliente (idCliente: Int): Optional<ClienteDomain>
+    fun findByidCliente (idCliente: Long): Optional<ClienteDomain>
 }

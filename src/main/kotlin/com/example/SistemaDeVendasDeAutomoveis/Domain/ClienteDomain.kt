@@ -11,7 +11,7 @@ data class ClienteDomain(
     @Id
     @GeneratedValue
     @Column(name = "idCliente")
-    val idCliente: Int,
+    val idCliente: Long,
 
     @Column(name = "nome")
     val nome: String,
